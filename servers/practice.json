@@ -2,7 +2,7 @@
   "server": "practice",
   "updatedAt": "2026-07-17T12:00:00Z",
   "boards": {
-    "duelos": {
+    "duelos_mensual": {
       "period": "MONTHLY",
       "entries": [
         { "rank": 1, "uuid": "f7c77d99-9f15-4a66-a87d-c4a51ef30d19", "name": "MHF_Steve", "value": 512 },

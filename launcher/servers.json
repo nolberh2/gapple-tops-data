@@ -1,0 +1,21 @@
+{
+  "updated_at": "2026-09-08T00:00:00Z",
+  "servers": [
+    {
+      "id": "gapple-premium",
+      "name": "Gapple PREMIUM",
+      "address": "gapple.club",
+      "port": 25565,
+      "versions": [],
+      "description": "Para entrar con tu cuenta de Microsoft."
+    },
+    {
+      "id": "gapple-nopremium",
+      "name": "Gapple NoPremium",
+      "address": "np.gapple.club",
+      "port": 25565,
+      "versions": [],
+      "description": "Para entrar con tu cuenta de GappleClub."
+    }
+  ]
+}

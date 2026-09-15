@@ -7,7 +7,8 @@
       "address": "gapple.club",
       "port": 25565,
       "versions": [],
-      "description": "Para entrar con tu cuenta de Microsoft."
+      "description": "Para entrar con tu cuenta de Microsoft.",
+      "account": "premium"
     },
     {
       "id": "gapple-nopremium",
@@ -15,7 +16,8 @@
       "address": "np.gapple.club",
       "port": 25565,
       "versions": [],
-      "description": "Para entrar con tu cuenta de GappleClub."
+      "description": "Para entrar con tu cuenta de GappleClub.",
+      "account": "cracked"
     }
   ]
 }

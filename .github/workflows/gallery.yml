@@ -1,0 +1,25 @@
+name: galeria-skins
+on:
+  schedule:
+    - cron: "17 4 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: gallery
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/gallery.mjs
+      - if: always()
+        run: |
+          git add gallery/skins.json
+          git diff --cached --quiet && exit 0
+          git -c user.name=nolberh2 -c user.email=clubgapple@gmail.com commit -q -m "galeria: Actualización automática"
+          # El plugin de tops empuja a main cada pocos minutos.
+          for i in 1 2 3; do git pull -q --rebase && git push -q && exit 0; sleep 5; done
+          exit 1

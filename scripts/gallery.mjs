@@ -12,7 +12,8 @@ const LISTS = { trending: "trending_7d", popular: "most_used" };
 // filtro tira algunas.
 const PAGE = 100;
 const PAGES = 2;
-const KEEP = 100;
+// 4 páginas de 24 en el launcher.
+const KEEP = 96;
 const MIN_GOOD = 12;
 const OUT = "gallery/skins.json";
 

@@ -8,8 +8,11 @@ import { readFileSync, writeFileSync } from "node:fs";
 
 const LABYNET = "https://laby.net/api/v3/search/textures/skin";
 const LISTS = { trending: "trending_7d", popular: "most_used" };
-const FETCH_SIZE = 60; // se pide de más porque el filtro tira algunas
-const KEEP = 48;
+// LabyNet da como mucho 100 por consulta. Se pide una tanda más porque el
+// filtro tira algunas.
+const PAGE = 100;
+const PAGES = 2;
+const KEEP = 100;
 const MIN_GOOD = 12;
 const OUT = "gallery/skins.json";
 
@@ -71,11 +74,15 @@ async function main() {
   let failed = 0;
   for (const [list, order] of Object.entries(LISTS)) {
     try {
-      const res = await fetch(`${LABYNET}?order=${order}&size=${FETCH_SIZE}`, {
-        headers: { Accept: "application/json" },
-      });
-      if (!res.ok) throw new Error(`LabyNet ${res.status}`);
-      const skins = cleanList((await res.json())?.results);
+      const raw = [];
+      for (let i = 0; i < PAGES; i++) {
+        const res = await fetch(`${LABYNET}?order=${order}&size=${PAGE}&offset=${i * PAGE}`, {
+          headers: { Accept: "application/json" },
+        });
+        if (!res.ok) throw new Error(`LabyNet ${res.status}`);
+        raw.push(...((await res.json())?.results ?? []));
+      }
+      const skins = cleanList(raw);
       if (skins.length < MIN_GOOD) throw new Error(`solo ${skins.length} skins`);
       saved[list] = skins;
     } catch (err) {

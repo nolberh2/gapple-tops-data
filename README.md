@@ -16,3 +16,8 @@ documentado en el README de `gappleweb2`.
 ## Servidores actuales
 - `servers/survival.json` — Survival Custom
 - `servers/practice.json` — Practice
+
+## Galería de skins
+`gallery/skins.json` — skins populares de LabyNet para el launcher de GappleClient
+(«Explorar» en Cosméticos). Lo regenera una vez al día la tarea `galeria-skins` de
+GitHub (`scripts/gallery.mjs`); se puede lanzar a mano desde la pestaña Actions.
